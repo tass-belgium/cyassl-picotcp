@@ -1,0 +1,10 @@
+[submodule "picotcp"]
+	path = picotcp
+	url = git@github.com:tass-belgium/picotcp.git
+[submodule "picotcp-bsd"]
+	path = picotcp-bsd
+	url = git@github.com:tass-belgium/picotcp-bsd.git
+[submodule "cyassl"]
+	path = cyassl
+	url = git@github.com:tass-belgium/cyassl.git
+	branch = picotcp
