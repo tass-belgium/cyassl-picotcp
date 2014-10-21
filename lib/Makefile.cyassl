@@ -1,0 +1,31 @@
+PREFIX?=$(PWD)/../out
+CC:=gcc
+CROSS_COMPILE:=arm-none-eabi-
+ARCH:=stm32
+
+CFLAGS  =  -I. $(INC_DIRS) -O2 -g -Wall -DSTM32F407xx
+CFLAGS += -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork
+CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16 
+CFLAGS += -ffreestanding
+CFLAGS +=-I. -Iconfig $(EXTRA_CFLAGS) $(PLATFORM_CFLAGS) -I$(PREFIX)/include -DCYASSL_PICOTCP -DCYASSL_STM32F4 -DSINGLE_THREADED -DNO_WRITEV -DCYASSL_STM32 -DCYASSL_USER_IO -DNO_DEV_RANDOM -DUSE_FAST_MATH -DNO_FILESYSTEM
+# Fetch source files
+SRC_DIR=src ctaocrypt/src
+CXX_FILES := $(foreach sdir,$(SRC_DIR),$(wildcard $(sdir)/*.c))
+
+# Translate to .o object files
+OBJS:= $(patsubst %.c,%.o,$(CXX_FILES))
+
+all: $(PREFIX)/lib/libcyassl.a
+
+%.o: %.c
+	$(CROSS_COMPILE)$(CC) -c $(CFLAGS) -o $@ $<
+
+$(PREFIX)/lib/libcyassl.a: $(OBJS)
+	@mkdir -p $(PREFIX)/include/cyassl/ctaocrypt
+	@cp cyassl/*.h  $(PREFIX)/include/cyassl
+	@cp cyassl/ctaocrypt/*.h  $(PREFIX)/include/cyassl/ctaocrypt
+	@$(CROSS_COMPILE)ar cru $@ $(OBJS)
+	@$(CROSS_COMPILE)ranlib $@
+	
+clean:
+	rm -f $(OBJS)

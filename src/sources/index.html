@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>STM32F4 Discovery</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800|Open+Sans+Condensed:300,700" rel="stylesheet" />
+    <link href="picotcp_style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="board.js"></script>
+</head>
+<body onload="updateBoardInfo();getIp();">
+<div id="logo" class="container">
+    <h1><img alt="cloud" src="cloud.png" /><a href="/">Pico<span>TCP</span></a></h1>
+    <p>Connect your embedded devices</p>
+</div>
+<div id="wrapper" class="container">
+    <div id="menu" class="container">
+        <ul>
+            <li><a href="picotcp.html" title="">PicoTCP</a></li>
+            <li class="current_page_item"><a href="stm32f4.html" title="">STM32F4 Discovery</a></li>
+            <li><a href="terminal.html" title="">Terminal</a></li>
+            <li><a href="contact.html" title="">Contact</a></li>
+        </ul>
+    </div>
+    <div><span class="arrow-down"></span></div>
+    <div class="center-column">
+        <img src="STM32F4.jpg" alt="STM32F4 Discovery Board"/>
+    </div>
+    <div id="three-column" class="container">
+        <div class="two-column">
+            <p id="my_ip">IP: <span id="ip"></span></p>
+            <p id="uptime">uptime: 0 seconds</p>
+            <p><span id="led1_state">LED 4</span></p>
+            <p><span id="led2_state">LED 6</span>
+               <span id="led3_state">LED 3</span></p>
+            <p><span id="led4_state">LED 5</span></p>
+            <div class="button" onclick="toggle_led1()">Toggle LED 1</div>
+        </div>
+        <div class="two-column">
+            <p>I can't do downloads. Sorry.</p>
+        </div>
+    </div>
+</div>
+<div id="copyright">
+    <p>Copyright (c) 2014 Tass Belgium NV. All rights reserved. | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a> | Modified by <a href="http://phalox.be/">Phalox.be</a>.</p>
+</div>
+</body>
+</html>
