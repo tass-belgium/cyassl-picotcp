@@ -7,7 +7,7 @@ CFLAGS  =  -I. $(INC_DIRS) -O2 -g -Wall -DSTM32F407xx
 CFLAGS += -mcpu=cortex-m4 -mthumb -mlittle-endian -mthumb-interwork
 CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16 
 CFLAGS += -ffreestanding
-CFLAGS +=-I. -Iconfig $(EXTRA_CFLAGS) $(PLATFORM_CFLAGS) -I$(PREFIX)/include -DCYASSL_PICOTCP -DCYASSL_STM32F4 -DSINGLE_THREADED -DNO_WRITEV -DCYASSL_STM32 -DCYASSL_USER_IO -DNO_DEV_RANDOM -DUSE_FAST_MATH -DNO_FILESYSTEM
+CFLAGS +=-I. -Iconfig $(EXTRA_CFLAGS) $(PLATFORM_CFLAGS) -I$(PREFIX)/include -DCYASSL_PICOTCP -DCYASSL_PICOTCP_DEMO
 # Fetch source files
 SRC_DIR=src ctaocrypt/src
 CXX_FILES := $(foreach sdir,$(SRC_DIR),$(wildcard $(sdir)/*.c))

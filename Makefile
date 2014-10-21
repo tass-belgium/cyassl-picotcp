@@ -40,7 +40,7 @@ all: $(OUT_FILE).bin
 
 clean:
 	rm -rf out 
-	find . -name "*.o" | xargs rm
+	find . -name "*.o" | xargs rm || true
 
 flash: $(OUT_FILE).bin
 	$(STM32FLASH) $^
@@ -51,7 +51,7 @@ $(OUT_FILE).bin: $(OUT_FILE).elf
 	$(CP) $(CPFLAGS) $(OUT_FILE).elf -O ihex $(OUT_FILE).hex
 
 $(OUT_FILE).elf: out/lib $(OBJ_FILES)
-	$(LD) $(CFLAGS) -Wl,--verbose -o $@ -Iout/include -Wl,--start-group out/lib/lib* $(OBJ_FILES) -Wl,--end-group -Wl,-Map,$(OUT_FILE).map $(LFLAGS)
+	$(LD) $(CFLAGS) -o $@ -Iout/include -Wl,--start-group out/lib/lib* $(OBJ_FILES) -Wl,--end-group -Wl,-Map,$(OUT_FILE).map $(LFLAGS)
 
 out/lib:
 	$(MAKE) -C lib/ PREFIX=$(PREFIX) 
