@@ -1,7 +1,7 @@
 [submodule "picotcp"]
-	path = picotcp
+	path = lib/picotcp
 	url = git@github.com:tass-belgium/picotcp.git
 [submodule "cyassl"]
-	path = cyassl
+	path = lib/cyassl
 	url = git@github.com:tass-belgium/cyassl.git
 	branch = picotcp
