@@ -5,3 +5,6 @@
 	path = lib/cyassl
 	url = git@github.com:tass-belgium/cyassl.git
 	branch = picotcp
+[submodule "lib/picotcp-modules"]
+	path = lib/picotcp-modules
+	url = https://github.com/tass-belgium/picotcp-modules.git
